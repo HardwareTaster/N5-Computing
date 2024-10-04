@@ -6,7 +6,7 @@ for index in range(12):
     savings = float(input("Enter this months savings: "))
     # Add savings to total
     total = total + savings
-    print("total")
+    print(total)
 
 # Display total rounded to 2 decimal places
 print(round(total,2))
