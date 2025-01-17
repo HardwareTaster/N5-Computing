@@ -1,0 +1,49 @@
+
+# Start variables
+startMiles = int(input('What is the mileage at the start of the journey? '))
+chargeStationsNum = int(input('How many charging stations are there during the journey? '))
+pricePerMile = 0
+milesTravelled = 0
+stageCost = 0
+totalJourneyCost = 0
+totalMiles = 0
+
+# List to hold stage costs for each charging station
+stageCosts = []
+
+# Loop through each charging station
+for ender in range(chargeStationsNum):
+    currentMiles = int(input('What is the current mileage? '))
+    validKwRatingQQ = int(input('What is the kW rating of the charging station? '))
+    
+    # Ensure the kW rating is valid
+    while not (validKwRatingQQ == 7 or validKwRatingQQ == 22 or validKwRatingQQ == 55):
+        print('Oops, unjustifiable kW rating! Please enter a correct value.')
+        validKwRatingQQ = int(input('What is the kW rating of the charging station? '))
+    
+    # Set price per mile based on the kW rating
+    if validKwRatingQQ == 7:
+        pricePerMile = 0.
+    elif validKwRatingQQ == 22:
+        pricePerMile = 0.005
+    else:
+        pricePerMile = 0.01  # Adding 55 kW support
+    
+    # Calculate miles traveled since the last station
+    milesTravelled = currentMiles - startMiles
+    startMiles = currentMiles  # Update the starting mileage for the next stage
+    
+    # Calculate the cost for this stage
+    stageCost = pricePerMile * milesTravelled
+    stageCosts.append(stageCost)  # Store the stage cost in the list
+    
+    # Accumulate the total journey cost
+    totalJourneyCost += stageCost
+   print()
+
+# Print stage costs and total journey cost
+for ender in range(chargeStationsNum):
+    print(f'Journey stage {ender + 1} cost: {round(stageCosts[ender], 2)}')
+
+# Print total journey cost
+print(f'The total cost of your journey is: {round(totalJourneyCost, 2)}')
