@@ -26,9 +26,10 @@ for index in range(NumberofStations):
     startMiles = currentMiles
     stagecost = PriceperMile*milesTravelled
     print("journey stage", index)
+    #running total of joutney costs and miles travelled
     totaljourneycost += stagecost
     totalmiles += milesTravelled
-
+#diplay total journey cost and miles travelled
 print ("your total journey cost is ",round(totaljourneycost,2))
 print("your total miles travelled is ", totalmiles)
 
